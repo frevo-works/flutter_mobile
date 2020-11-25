@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'pages/bluetooth.dart';
 import 'pages/face_detect.dart';
 import 'pages/graph.dart';
-import 'pages/video_call.dart';
+import 'pages/video_call/video_call.dart';
+import 'pages/video_call/video_call_index.dart';
 
 void main() {
   runApp(MyApp());
@@ -38,7 +39,7 @@ class _Home extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) {
-                    return VideoCallPage();
+                    return VideoCallIndexPage();
                   }),
                 );
               },

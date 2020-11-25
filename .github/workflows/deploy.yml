@@ -32,7 +32,8 @@ jobs:
         run: flutter pub get
       
       - name: build apk
-        run: flutter build apk
+        run: flutter build apk \
+             --dart-define＝AGORA_API_KEY=${{secrets.AGORA_API_KEY}}
 
       - name: Distribute android apk
         run: |
