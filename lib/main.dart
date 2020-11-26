@@ -7,6 +7,7 @@ import 'pages/video_call/video_call.dart';
 import 'pages/video_call/video_call_index.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
