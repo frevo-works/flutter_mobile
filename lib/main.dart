@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'pages/bluetooth.dart';
 import 'pages/face_detect.dart';
 import 'pages/graph.dart';
-import 'pages/video_call/video_call.dart';
 import 'pages/video_call/video_call_index.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
