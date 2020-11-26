@@ -41,5 +41,21 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIStatusBarHidden</key>
+	<true/>
+	<key>io.flutter.embedded_views_preview</key>
+    <string>YES</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is required to share you location within google map</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>  
+    <string>Need BLE permission</string>  
+	<key>NSBluetoothPeripheralUsageDescription</key>  
+    <string>Need BLE permission</string>  
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>  
+	<string>Need Location permission</string>  
+	<key>NSLocationAlwaysUsageDescription</key>  
+	<string>Need Location permission</string>  
+	<key>NSLocationWhenInUseUsageDescription</key>  
+	<string>Need Location permission</string>
 </dict>
 </plist>

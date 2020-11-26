@@ -14,3 +14,8 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+# 初回起動時はこちらを実行してください
+①プロジェクト直下で flutter pub get　を実行
+②flutter pub pub run flutter_native_splash:create　を実行
+③ビルドして実行
