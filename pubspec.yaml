@@ -10,13 +10,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_maps_flutter: ^0.0.3+3
+  google_maps_flutter: 0.5.28+1
   sqflite: ^1.2.0
   path_provider: ^1.6.0
   http: ^0.12.0
-
-
-
+  charts_flutter: ^0.9.0
+  permission_handler: 5.0.1+1
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
@@ -28,6 +27,16 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/sheep.png
+    - assets/images/truck.png
+  #plugin:
+    # platforms:
+    #   android:
+    #     package: com.pauldemarco.flutter_blue
+    #     pluginClass: FlutterBluePlugin
+    #   ios:
+    #     pluginClass: FlutterBluePlugin
+    #   macos:
+    #     pluginClass: FlutterBluePlugin
 
 flutter_native_splash:
   image: assets/images/tanukitsu_icon.png

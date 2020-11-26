@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobile/pages/google_map_page.dart';
 
 import 'pages/bluetooth.dart';
 import 'pages/face_detect.dart';
 import 'pages/graph.dart';
 import 'pages/video_call.dart';
+import 'pages/menu.dart';
 
 void main() {
   runApp(MyApp());
@@ -75,6 +77,30 @@ class _Home extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) {
                     return BluetoothPage();
+                  }),
+                );
+              },
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title: Text('GoogleMap'),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) {
+                    return GoogleMapPage();
+                  }),
+                );
+              },
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title: Text('menu'),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) {
+                    return MenuPage();
                   }),
                 );
               },
