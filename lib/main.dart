@@ -4,8 +4,8 @@ import 'package:flutter_mobile/pages/google_map_page.dart';
 import 'pages/bluetooth.dart';
 import 'pages/face_detect.dart';
 import 'pages/graph.dart';
-import 'pages/video_call.dart';
 import 'pages/menu.dart';
+import 'pages/video_call/video_call_index.dart';
 
 void main() {
   runApp(MyApp());
@@ -40,7 +40,7 @@ class _Home extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) {
-                    return VideoCallPage();
+                    return VideoCallIndexPage();
                   }),
                 );
               },
