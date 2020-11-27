@@ -27,6 +27,9 @@ jobs:
         with:
           flutter-version: '1.20.2'
           channel: 'stable'
+    　
+      - name: flutter dependencies clean
+        run: flutter clean
       
       - name: flutter dependencies install
         run: flutter pub get
