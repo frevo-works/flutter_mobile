@@ -43,7 +43,7 @@ android {
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        manifestPlaceholders = [GOOGLE_API_KEY:System.getenv('secrets.GOOGLE_API_KEY')]
+        manifestPlaceholders = [GOOGLE_API_KEY:System.getenv('GOOGLE_API_KEY')]
     }
 
     buildTypes {
