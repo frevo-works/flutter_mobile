@@ -126,23 +126,23 @@ class _Home extends StatelessWidget {
                   ),
                   Text("GoogleMap")
                 ]))),
-        Card(
-            child: new InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      return LoginPage();
-                    }),
-                  );
-                },
-                child: Column(children: <Widget>[
-                  Icon(
-                    Icons.login,
-                    size: 150,
-                    color: Colors.amber,
-                  ),
-                  Text("Login")
-                ]))),
+        // Card(
+        //     child: new InkWell(
+        //         onTap: () {
+        //           Navigator.of(context).push(
+        //             MaterialPageRoute(builder: (context) {
+        //               return LoginPage();
+        //             }),
+        //           );
+        //         },
+        //         child: Column(children: <Widget>[
+        //           Icon(
+        //             Icons.login,
+        //             size: 150,
+        //             color: Colors.amber,
+        //           ),
+        //           Text("Login")
+        //         ]))),
       ],
     );
   }
