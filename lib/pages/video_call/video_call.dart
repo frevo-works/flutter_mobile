@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
+import 'package:flutter_mobile/common/importer.dart';
 
 const APP_ID = String.fromEnvironment("AGORA_API_KEY");
 
@@ -290,9 +290,7 @@ class _VideoCallPageState extends State<VideoCallPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Agora Flutter QuickStart'),
-      ),
+      appBar: HeaderComponent(title: "ビデオ通話"),
       backgroundColor: Colors.black,
       body: Center(
         child: Stack(

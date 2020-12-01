@@ -1,5 +1,5 @@
 import 'package:camera/camera.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_mobile/common/importer.dart';
 
 class FaceDetectPage extends StatefulWidget {
   // FaceDetectPage({Key key}) : super(key: key);
@@ -51,10 +51,6 @@ class _FaceDetectPageState extends State<FaceDetectPage> {
                   child: new CameraPreview(_controller))));
     }
 
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('顔検知'),
-        ),
-        body: content);
+    return Scaffold(appBar: HeaderComponent(title: "顔検知"), body: content);
   }
 }

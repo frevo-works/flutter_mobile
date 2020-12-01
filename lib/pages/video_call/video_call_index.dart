@@ -1,7 +1,5 @@
 import 'dart:async';
-
-import 'package:agora_rtc_engine/rtc_engine.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter_mobile/common/importer.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'video_call.dart';
@@ -28,9 +26,7 @@ class _IndexState extends State<VideoCallIndexPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Agora Flutter QuickStart'),
-      ),
+      appBar: HeaderComponent(title: "ビデオ通話"),
       body: Center(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20),
