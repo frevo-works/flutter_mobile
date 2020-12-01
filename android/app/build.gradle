@@ -25,8 +25,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
-System.out.println(System.getenv('GOOGLE_API_KEY'))
-
 android {
     compileSdkVersion 29
 
@@ -45,7 +43,7 @@ android {
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        manifestPlaceholders = [GOOGLE_API_KEY:System.getenv('GOOGLE_API_KEY')]
+        manifestPlaceholders = [GOOGLE_API_KEY:System.getenv('secrets.GOOGLE_API_KEY')]
     }
 
     buildTypes {
