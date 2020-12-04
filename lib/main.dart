@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'pages/bluetooth.dart';
 import 'pages/face_detect.dart';
 import 'pages/graph.dart';
 import 'pages/login.dart';
 import 'pages/map.dart';
+import 'pages/persistence/todo_bloc.dart';
+import 'pages/persistence/todo_list.dart';
 import 'pages/video_call/video_call_index.dart';
 
 void main() {
@@ -125,6 +128,26 @@ class _Home extends StatelessWidget {
                     color: Colors.amber,
                   ),
                   Text("GoogleMap")
+                ]))),
+        Card(
+            child: new InkWell(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) {
+                      return Provider<TodoBloc>(
+                          create: (context) => new TodoBloc(),
+                          dispose: (context, bloc) => bloc.dispose(),
+                          child: TodoListView());
+                    }),
+                  );
+                },
+                child: Column(children: <Widget>[
+                  Icon(
+                    Icons.list,
+                    size: 150,
+                    color: Colors.amber,
+                  ),
+                  Text("SQLite")
                 ]))),
         // Card(
         //     child: new InkWell(
