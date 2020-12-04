@@ -1,6 +1,9 @@
 import '../common/importer.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
+import '../common/importer.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
+
 class GraphPage extends StatefulWidget {
   GraphPage({Key key}) : super(key: key);
 
@@ -94,7 +97,7 @@ class _GraphPageState extends State<GraphPage> {
       ],
     );
     return Scaffold(
-      appBar: HeaderComponent(),
+      appBar: HeaderComponent(title: "グラフ"),
       body: gridView,
     );
   }

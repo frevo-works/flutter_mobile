@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HeaderComponent extends StatefulWidget implements PreferredSizeWidget {
+  final String title;
+
+  const HeaderComponent({Key key, this.title}) : super(key: key);
+
   @override
   State<HeaderComponent> createState() => HeaderComponentState();
 

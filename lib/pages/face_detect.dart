@@ -1,5 +1,8 @@
 import 'package:camera/camera.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_camera_ml_vision/flutter_camera_ml_vision.dart';
+import 'package:flutter_mobile/common/importer.dart';
+import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 
 class FaceDetectPage extends StatefulWidget {
   // FaceDetectPage({Key key}) : super(key: key);
@@ -9,52 +12,73 @@ class FaceDetectPage extends StatefulWidget {
 }
 
 class _FaceDetectPageState extends State<FaceDetectPage> {
-  CameraController _controller;
+  String _scannedData;
+
+  final _scanKey = GlobalKey<CameraMlVisionState>();
+
+  FaceDetector detector =
+      FirebaseVision.instance.faceDetector(FaceDetectorOptions(
+    enableTracking: true,
+    mode: FaceDetectorMode.accurate,
+  ));
 
   @override
   void initState() {
     super.initState();
-    availableCameras().then((cameras) {
-      CameraDescription rearCamera = cameras.firstWhere(
-          (desc) => desc.lensDirection == CameraLensDirection.front,
-          orElse: () => null);
-      if (rearCamera == null) {
-        return;
-      }
 
-      _controller = new CameraController(rearCamera, ResolutionPreset.high);
-      _controller.initialize().then((_) {
-        if (!mounted) {
-          return;
-        }
-        setState(() {});
-      });
-    });
-  }
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
 
-  @override
-  void dispose() {
-    _controller?.dispose();
-    super.dispose();
+    _scannedData = 'スキャン中…';
   }
 
   @override
   Widget build(BuildContext context) {
-    var content;
-    if (_controller == null || !_controller.value.isInitialized) {
-      content = Center(child: CircularProgressIndicator());
-    } else {
-      content = new Container(
-          child: new Center(
-              child: new AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  child: new CameraPreview(_controller))));
-    }
-
     return Scaffold(
-        appBar: AppBar(
-          title: Text('顔検知'),
+      appBar: HeaderComponent(title: "顔検知"),
+      body: SizedBox.expand(
+        child: CameraMlVision<List<Face>>(
+          key: _scanKey,
+          cameraLensDirection: CameraLensDirection.front,
+          detector: detector.processImage,
+          overlayBuilder: (c) {
+            return Column(
+              children: <Widget>[
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.6,
+                ),
+                FittedBox(
+                  // スキャンしたデータが何文字になるか分からないのでFittedBoxで囲った
+                  child: Text(
+                    _scannedData,
+                    style: TextStyle(
+                      color: Colors.greenAccent,
+                      fontSize: 40.0,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+          onResult: (faces) {
+            if (faces == null || faces.isEmpty || !mounted) {
+              setState(() {
+                _scannedData = 'スキャン中';
+              });
+              return;
+            }
+
+            setState(() {
+              _scannedData = "認識中";
+            });
+          },
+          onDispose: () {
+            detector.close();
+          },
         ),
-        body: content);
+      ),
+    );
   }
 }
