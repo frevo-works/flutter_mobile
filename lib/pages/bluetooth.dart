@@ -11,16 +11,16 @@ class BluetoothPage extends StatefulWidget {
 
 class _BluetoothPageState extends State<BluetoothPage> {
   Future<void> checkBlueTooth() async {
-    FlutterBlue flutterBlue = FlutterBlue.instance;
-    flutterBlue.startScan(timeout: Duration(seconds: 4));
+    // FlutterBlue flutterBlue = FlutterBlue.instance;
+    // flutterBlue.startScan(timeout: Duration(seconds: 4));
 
 // Listen to scan results
-    var subscription = flutterBlue.scanResults.listen((results) {
-      // do something with scan results
-      for (ScanResult r in results) {
-        print('${r.device.name} found! rssi: ${r.rssi}');
-      }
-    });
+    // var subscription = flutterBlue.scanResults.listen((results) {
+    //   // do something with scan results
+    //   for (ScanResult r in results) {
+    //     print('${r.device.name} found! rssi: ${r.rssi}');
+    //   }
+    // });
 //     List<BluetoothService> services = await device.discoverServices();
 //     services.forEach((service) {
 //       var characteristics = service.characteristics;
@@ -34,7 +34,7 @@ class _BluetoothPageState extends State<BluetoothPage> {
 // await c.write([0x12, 0x34])
 // );
 // Stop scanning
-    flutterBlue.stopScan();
+    //   flutterBlue.stopScan();
   }
 
   @override
@@ -50,7 +50,7 @@ class _BluetoothPageState extends State<BluetoothPage> {
                 var subscription = flutterBlue.scanResults.listen((results) {
                   // do something with scan results
                   for (ScanResult r in results) {
-                    debugPrint('${r.device.name} が見つかったよ! rssi: ${r.rssi}');
+                    debugPrint('${r.device.name} が見つかった rssi: ${r.rssi}');
                   }
                 });
                 flutterBlue.stopScan();
