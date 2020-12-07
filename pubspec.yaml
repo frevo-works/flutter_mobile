@@ -43,6 +43,7 @@ dependencies:
   provider: ^4.0.2
   path_provider: ^1.6.0
   intl: ^0.16.1
+  flutter_blue: ^0.7.3
 
 dev_dependencies:
   flutter_test:
