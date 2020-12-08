@@ -21,7 +21,11 @@ class _MenuPageState extends State<MenuPage> {
               size: 150,
               color: Colors.amber,
             ),
-            Text("ビデオ通話"),
+            AutoSizeText(
+              'ビデオ通話',
+              style: TextStyle(fontSize: 250),
+              maxLines: 2,
+            )
           ]),
         ),
         Card(
