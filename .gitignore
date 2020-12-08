@@ -42,3 +42,4 @@ app.*.map.json
 
 .vscode/
 pubspec.lock
+ios/PodFile.lock
