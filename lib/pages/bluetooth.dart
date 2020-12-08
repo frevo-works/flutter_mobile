@@ -1,4 +1,8 @@
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter_mobile/common/importer.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 
@@ -10,54 +14,12 @@ class BluetoothPage extends StatefulWidget {
 }
 
 class _BluetoothPageState extends State<BluetoothPage> {
-  BluetoothDevice device;
-  BluetoothState state;
-  BluetoothDeviceState deviceState;
-  FlutterBlue flutterBlue = FlutterBlue.instance;
-  var scanSubscription;
-  Future<void> checkBlueTooth() async {
-    // FlutterBlue flutterBlue = FlutterBlue.instance;
-    // flutterBlue.startScan(timeout: Duration(seconds: 4));
+  final _streamController = StreamController<List<ScanResult>>();
 
-// Listen to scan results
-    // var subscription = flutterBlue.scanResults.listen((results) {
-    //   // do something with scan results
-    //   for (ScanResult r in results) {
-    //     print('${r.device.name} found! rssi: ${r.rssi}');
-    //   }
-    // });
-//     List<BluetoothService> services = await device.discoverServices();
-//     services.forEach((service) {
-//       var characteristics = service.characteristics;
-//       for(BluetoothCharacteristic c in characteristics) {
-//       List<int> value = await c.read();
-//     print(value);
-//     // do something with service
-// });
-
-// Writes to a characteristic
-// await c.write([0x12, 0x34])
-// );
-// Stop scanning
-    //   flutterBlue.stopScan();
-  }
-  void scanForDevices() async {
-    scanSubscription = flutterBlue.scan().listen((scanResult) async {
-      if (scanResult.device.name == "your_device_name") {
-        print("found device");
-        //Assigning bluetooth device
-        device = scanResult.device;
-        //After that we stop the scanning for device
-        stopScanning();
-      } else {
-        print(scanResult.device);
-      }
-    });
-  }
-
-  void stopScanning() {
-    flutterBlue.stopScan();
-    scanSubscription.cancel();
+  @override
+  void dispose() {
+    _streamController.close();
+    super.dispose();
   }
 
   @override
@@ -67,23 +29,51 @@ class _BluetoothPageState extends State<BluetoothPage> {
       body: Column(
         children: <Widget>[
           ElevatedButton(
-              onPressed: () async {
-                flutterBlue.startScan(timeout: Duration(seconds: 2));
-                var subscription = flutterBlue.scanResults.listen((results) {
-                  for (ScanResult r in results) {
-                    debugPrint('${r.device.name} が見つかった rssi: ${r.rssi}');
-                  }
+              onPressed: () {
+                FlutterBlue flutterBlue = FlutterBlue.instance;
+
+                flutterBlue.startScan(timeout: Duration(seconds: 10));
+                flutterBlue.scanResults.listen((results) {
+                  // do something with scan results
+                  this._streamController.sink.add(results
+                      .where((element) => element.device.name.isNotEmpty)
+                      .where((element) => element.advertisementData.connectable)
+                      .toList());
+                  // for (ScanResult r in results) {
+                  //   debugPrint('${r.device.name} が見つかった rssi: ${r.rssi}');
+                  // }
                 });
                 flutterBlue.stopScan();
-                FlutterBlue.instance.state.listen((state) {
-                  if (state == BluetoothState.off) {
-                    //Alert user to turn on bluetooth.
-                  } else if (state == BluetoothState.on) {
-                    scanForDevices();
-                  }
-                });
               },
-              child: Icon(Icons.ac_unit))
+              child: Text("スキャン開始")),
+          StreamBuilder<List<ScanResult>>(
+              stream: this._streamController.stream,
+              builder: (BuildContext context,
+                  AsyncSnapshot<List<ScanResult>> snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      ScanResult scanResult = snapshot.data[index];
+
+                      return Card(
+                          child: ListTile(
+                        title: Text(scanResult.device.name),
+                        subtitle: Text(scanResult.device.id.toString()),
+                        trailing: ElevatedButton(
+                            child: Container(child: Text("Connect")),
+                            onPressed: () {
+                              // 接続
+                              scanResult.device.connect(autoConnect: true);
+                            }),
+                      ));
+                    },
+                  );
+                } else {
+                  return Center(child: CircularProgressIndicator());
+                }
+              })
         ],
       ),
     );
