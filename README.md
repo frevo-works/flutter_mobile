@@ -23,6 +23,7 @@ samples, guidance on mobile development, and a full API reference.
 ③ビルドして実行
 
 #　iOSの実機ビルドをする時はこちらの手順に従ってください
+
 ①cd ios でiosフォルダに入る
 ②pod install　を実行
 ③Xcodeを開く

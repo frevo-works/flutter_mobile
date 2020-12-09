@@ -24,6 +24,7 @@ class _BluetoothPageState extends State<BluetoothPage> {
 
   @override
   Widget build(BuildContext context) {
+    print("こうしんできてるよ");
     return Scaffold(
       appBar: HeaderComponent(title: "Bluetooth"),
       body: Column(

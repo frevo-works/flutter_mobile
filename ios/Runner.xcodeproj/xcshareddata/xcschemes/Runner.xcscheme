@@ -61,8 +61,13 @@
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = ""
-            value = ""
+            key = "AGORA_API_KEY"
+            value = "cb7e31ef922b49579ea94625ddefb1a1"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "GOOGLE_API_KEY"
+            value = "AIzaSyBkS_LCV4TlLtPQI6daAggkLTYyh6JaBTM"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
