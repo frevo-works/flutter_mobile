@@ -83,11 +83,11 @@ class _MapPageState extends State<MapPage> {
     );
   }
 
-  Future<void> _goToTheLake() async {
-    Navigator.pop(context);
-    final GoogleMapController controller = await _controller.future;
-    //controller.animateCamera(CameraUpdate.newCameraPosition());
-  }
+  // Future<void> _goToTheLake() async {
+  //   Navigator.pop(context);
+  //   final GoogleMapController controller = await _controller.future;
+  //   //controller.animateCamera(CameraUpdate.newCameraPosition());
+  // }
 
   Future<void> _getIcon() async {
     await BitmapDescriptor.fromAssetImage(
