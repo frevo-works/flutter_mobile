@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'pages/bluetooth.dart';
-import 'pages/face_detect.dart';
+// import 'pages/face_detect.dart';
 import 'pages/graph.dart';
-import 'pages/login.dart';
+// import 'pages/login.dart';
 import 'pages/map.dart';
 import 'pages/persistence/todo_bloc.dart';
 import 'pages/persistence/todo_list.dart';
@@ -77,23 +77,23 @@ class _Home extends StatelessWidget {
                   ),
                   Text("Chart")
                 ]))),
-        Card(
-            child: new InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      return FaceDetectPage();
-                    }),
-                  );
-                },
-                child: Column(children: <Widget>[
-                  Icon(
-                    Icons.camera_front,
-                    size: 150,
-                    color: Colors.amber,
-                  ),
-                  Text("Face Detect")
-                ]))),
+        // Card(
+        //     child: new InkWell(
+        //         onTap: () {
+        //           Navigator.of(context).push(
+        //             MaterialPageRoute(builder: (context) {
+        //               return FaceDetectPage();
+        //             }),
+        //           );
+        //         },
+        //         child: Column(children: <Widget>[
+        //           Icon(
+        //             Icons.camera_front,
+        //             size: 150,
+        //             color: Colors.amber,
+        //           ),
+        //           Text("Face Detect")
+        //         ]))),
         Card(
             child: new InkWell(
                 onTap: () {
@@ -165,85 +165,6 @@ class _Home extends StatelessWidget {
         //           ),
         //           Text("Login")
         //         ]))),
-      ],
-    );
-  }
-
-  Widget _listView(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        Card(
-          child: ListTile(
-            title: Text('マップ'),
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) {
-                  return MapPage();
-                }),
-              );
-            },
-          ),
-        ),
-        Card(
-          child: ListTile(
-            title: Text('ビデオ通話'),
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) {
-                  return VideoCallIndexPage();
-                }),
-              );
-            },
-          ),
-        ),
-        Card(
-          child: ListTile(
-            title: Text('グラフ'),
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) {
-                  return GraphPage();
-                }),
-              );
-            },
-          ),
-        ),
-        Card(
-          child: ListTile(
-            title: Text('カメラ（顔検知）'),
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) {
-                  return FaceDetectPage();
-                }),
-              );
-            },
-          ),
-        ),
-        Card(
-          child: ListTile(
-            title: Text('Bluetooth'),
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) {
-                  return BluetoothPage();
-                }),
-              );
-            },
-          ),
-        ),
-        Card(
-          child: ListTile(
-            title: Text('ログイン画面'),
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) {
-                  return LoginPage();
-                }),
-              );
-            },
-          ),
-        ),
       ],
     );
   }

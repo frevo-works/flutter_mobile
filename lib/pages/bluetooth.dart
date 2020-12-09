@@ -37,7 +37,6 @@ class _BluetoothPageState extends State<BluetoothPage> {
                 flutterBlue.scanResults.listen((results) {
                   // do something with scan results
                   this._streamController.sink.add(results
-                      .where((element) => element.device.name.isNotEmpty)
                       .where((element) => element.advertisementData.connectable)
                       .toList());
                   // for (ScanResult r in results) {
@@ -58,9 +57,14 @@ class _BluetoothPageState extends State<BluetoothPage> {
                     itemBuilder: (BuildContext context, int index) {
                       ScanResult scanResult = snapshot.data[index];
 
+                      String deviceName = "(no name)";
+                      if (scanResult.device.name.isNotEmpty) {
+                        deviceName = scanResult.device.name;
+                      }
+
                       return Card(
                           child: ListTile(
-                        title: Text(scanResult.device.name),
+                        title: Text(deviceName),
                         subtitle: Text(scanResult.device.id.toString()),
                         trailing: ElevatedButton(
                             child: Container(child: Text("Connect")),
