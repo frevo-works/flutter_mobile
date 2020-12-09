@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'pages/bluetooth.dart';
 // import 'pages/face_detect.dart';
 import 'pages/graph.dart';

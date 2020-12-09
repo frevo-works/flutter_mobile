@@ -44,6 +44,5 @@ app.*.map.json
 pubspec.lock
 
 /ios/build/*
-Pods/
-Podfile
-Podfile.lock
+/ios/Podfile.lock
+/ios/Pods/*

@@ -93,8 +93,8 @@ class _IndexState extends State<VideoCallIndexPage> {
   }
 
   Future<void> _handleCameraAndMic() async {
-    await PermissionHandler().requestPermissions(
-      [PermissionGroup.camera, PermissionGroup.microphone],
-    );
+    // await PermissionHandler().requestPermissions(
+    //   [PermissionGroup.camera, PermissionGroup.microphone],
+    // );
   }
 }

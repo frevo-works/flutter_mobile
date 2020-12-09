@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 import 'package:flutter_mobile/common/importer.dart';
+import 'package:flutter_blue/flutter_blue.dart';
 
 class BluetoothPage extends StatefulWidget {
   BluetoothPage({Key key}) : super(key: key);
@@ -23,6 +24,7 @@ class _BluetoothPageState extends State<BluetoothPage> {
 
   @override
   Widget build(BuildContext context) {
+    print("こうしんできてるよ");
     return Scaffold(
       appBar: HeaderComponent(title: "Bluetooth"),
       body: Column(
